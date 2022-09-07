@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input, Textarea } from '@chakra-ui/react'
 import * as Web3 from '@solana/web3.js'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
-import { ST } from 'next/dist/shared/lib/utils'
 
 const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
 
@@ -12,8 +11,8 @@ export const Form: FC = () => {
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
 
-    const { connection } = useConnection()
-    const { publicKey, sendTransaction } = useWallet()
+    const { connection } = useConnection();
+    const { publicKey, sendTransaction } = useWallet();
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
@@ -22,8 +21,6 @@ export const Form: FC = () => {
     }
 
     const handleTransactionSubmit = async (studentIntro: StudentIntro) => {
-        console.log(JSON.stringify(studentIntro))
-
         if (!publicKey) {
             alert('Please connect your wallet!')
             return
@@ -33,7 +30,7 @@ export const Form: FC = () => {
         const transaction = new Web3.Transaction()
 
         const [pda] = await Web3.PublicKey.findProgramAddress(
-            [publicKey.toBuffer(), Buffer.from(studentIntro.name)],
+            [publicKey.toBuffer()],
             new Web3.PublicKey(STUDENT_INTRO_PROGRAM_ID)
         )
 
