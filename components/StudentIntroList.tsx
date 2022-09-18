@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { StudentIntro } from '../models/StudentIntro'
 import * as Web3 from '@solana/web3.js'
 
-const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+const STUDENT_INTRO_PROGRAM_ID = 'Cvu5LAD78Tz2NsgxuoQewN3FPa3Hhsb4ThYNBAADMKPF'
 
 export const StudentIntroList: FC = () => {
     const [studentIntros, setStudentIntros] = useState<StudentIntro[]>([])
